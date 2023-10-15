@@ -3,9 +3,9 @@
 <h1>Welcome, {{ request.user.first_name }}</h1>
 
 <ul>
-    <li>Usernam : {{ request.user.username }}</li>
+    <li>Username : {{ request.user.username }}</li>
     <li>Email : {{ request.user.email }}</li>
 </ul>    
-<a href="{% url 'logout' %}">Log Out</a>
+<a href="{% url 'users:logout' %}">Logout</a>
 
 {% endblock body %}

@@ -1,13 +1,26 @@
 {% extends 'users/layout.html'%}
 {% block body %}
+<style>
+.login{
+    align-items: center;
+    padding: 15%;
+}
+</style>
 
-{% if message %}
-<div>{{message}}</div>
-{% endif %}
-<form action="{% url 'login'%}" method='post'> 
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login">
+<form action="{% url 'users:login'%}" method='post'> 
+    <div class="login">
+        <div class="form-group">
+            {% csrf_token %}
+                {% if message %}                
+                <label for="inputPassword5">{{message}}</label>
+            {% endif %}
+            <input type="text" class="form-control" name="username" placeholder="Username"><br>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+              </small>
+            <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+    </div>
 </form>    
 {% endblock %}
